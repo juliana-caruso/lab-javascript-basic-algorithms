@@ -16,7 +16,6 @@ if (hacker1.length > hacker2.length) {
   }
 
 // Iteration 3: Loops
-
 let result = '';
 for (let i = 0; i < hacker1.length; i++)  {
   result += hacker1[i].toUpperCase() + " ";
@@ -29,33 +28,61 @@ for (let i = hacker2.length - 1; i >= 0; i--)  {
 }
 console.log(res);
 
-if (checkOrder === -1) {
-    console.log('The driver\'s name goes first.');
-  } else if (checkOrder === 1) {
-    console.log('Yo, the navigator goes first definitely.');
-  } else {
-    console.log('What?! You both have the same name?');
-  }
+function alphabetical (str1, str2) {
+  const result = str1.localeCompare(str2);
+  if (result === -1) {
+      return "The driver\'s name goes first.";
+    } else if (result === 1) {
+      return "Yo, the navigator goes first definitely.";
+    } else {
+      return "What?! You both have the same name?";
+    }
+};
 
 // Bonus 1
-let text = "Fusce ex tortor, commodo gravida varius non, vestibulum at leo. Fusce vel ligula sem. Cras ornare sem mauris, ac venenatis nunc et commodo ut. Curabitur pellentesque justo vitae neque egestas sagittis. Sed id porttitor leo, sit amet consectetur ipsum. Phasellus accumsan est massa, non interdum sapien tempor ut. In eros et ante, cursus dignissim ultricies vitae, iaculis eget sem. Vestibulum rhoncus rutrum porta. Curabitur imperdiet suscipit massa, eget egestas mi tempus vel. Nulla vel efficitur felis. Sed ullamcorper accumsan ligula, vitae et semper erat dignissim sit amet. Sed at dui at massa blandit commodo hendrerit a tellus. Vivamus mi erat, dignissim ut dictum eget, fringilla a sapien. Duis massa elit, sagittis vitae consectetur a, tincidunt at neque. Sed ut tincidunt arcu.";
+const text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur scelerisque justo at nisi feugiat tempus. Etiam mattis neque vitae dolor semper feugiat. Proin ac consequat lectus, at eleifend odio. In vestibulum finibus tempus. Donec tristique nisi ac viverra vestibulum. Mauris sed gravida dui, eu vestibulum est. Aliquam posuere lacinia velit, dignissim sollicitudin est eleifend in. Suspendisse scelerisque, felis a vestibulum sodales, sem ipsum accumsan mauris, placerat hendrerit lectus libero sit amet diam. Cras porta sit amet dui ac placerat. Nunc libero urna, convallis ut arcu sit amet, lobortis facilisis velit. Aenean eget iaculis ligula. Quisque arcu felis, condimentum at ultrices sed, aliquet et ex. Donec nec nulla porta, vulputate nibh ut, varius odio. Praesent volutpat dui sed scelerisque volutpat. Mauris molestie eros nec lorem bibendum, et tempus dui varius."
 
-let count = 0;
-
-   let words = text.split(" "); 
-    for (i = 0 ; i < words.length ; i++){
-       if (words[i] != '') {
-          count += 1;
-       }
+function countWords(str) {
+  let counter = 0;
+  for(let i = 0; i < str.length; i++) {
+    if (str[i] === " ") {
+      counter += 1;
     }
-console.log(`There are ${count} words in the text.`);
+  }
+  return counter + 1;
+};
+countWords(text);
+console.log(`There are ${counter} words in the text.`);
+
+// easy alternative
+countStr = text.split(' ').length;
+console.log(countStr);
 
 let countEt = 0;
 
    let wordsEt = text.split(" "); 
+    console.log(wordsEt)
     for (j = 0 ; j < wordsEt.length ; j++){
-       if (words[j] === 'et') {
+       if (wordsEt[j].toLowerCase() === 'et') {
           countEt ++;
        }
     }
 console.log(`The word "Et" appears ${countEt} times.`);
+
+// Bonus 2
+const checkWord = 'amor';
+const palindrome = 'roma';
+
+function palindromeCheck(checkWord, palindrome) {
+  let reversed = '';
+  
+  for (let i = palindrome.length - 1; i >= 0; i--) {
+    reversed += palindrome[i];
+  }
+  if(reversed === checkWord) {
+    return "The word is palindrome";
+  } else {
+    return "The word is not palindrome";
+  }
+}
+palindromeCheck(checkWord, palindrome);
